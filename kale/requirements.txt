@@ -4,4 +4,4 @@ pandas
 scikit-learn
 seaborn
 tensorflow
-keras
+wget
