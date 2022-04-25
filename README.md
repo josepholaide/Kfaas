@@ -8,7 +8,8 @@ Data Scientists on this project:
 | ------------- |:-------------:|
 | Kubeflow      | v1     |
 | kfp           | 1.8.11 |
-| Cruise | [Joseph](https://www.linkedin.com/in/josepholaide)   |
+
+
 Kfp version used for testing can be installed as `pip install kfp==1.8.11`  
 
 # Components used
