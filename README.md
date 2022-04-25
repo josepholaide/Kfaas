@@ -1,6 +1,6 @@
 # Objective
 Here we convert the https://www.kaggle.com/competitions/digit-recognizer code to kfp-pipeline 
-The objective of this task is tois to correctly identify digits from a dataset of tens of thousands of handwritten images.
+The objective of this task is to correctly identify digits from a dataset of tens of thousands of handwritten images.
 
 # Testing environment
 Data Scientists on this project:
@@ -8,6 +8,7 @@ Data Scientists on this project:
 | ------------- |:-------------:|
 | Kubeflow      | v1     |
 | kfp           | 1.8.11 |
+| kubeflow-kale | 0.6.0  |
 
 
 Kfp version used for testing can be installed as `pip install kfp==1.8.11`  
