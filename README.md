@@ -1,5 +1,5 @@
 # Objective
-Here we convert the [!kaggle]https://www.kaggle.com/competitions/digit-recognizer code to kfp-pipeline 
+Here we convert the https://www.kaggle.com/competitions/digit-recognizer code to kfp-pipeline 
 The objective of this task is tois to correctly identify digits from a dataset of tens of thousands of handwritten images.
 
 # Testing environment
