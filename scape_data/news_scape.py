@@ -1,13 +1,13 @@
 import pickle
 
-import argparse
+import argparse, time
 from pathlib import Path
 
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
 import yfinance as yf
 
-from sklearn.model_selection import train_test_split
-
+time.sleep(5)
 def news_scape(args):
     yahoo_fin = 'https://finance.yahoo.com/quote/{ticker}/news?p={ticker}'
 
@@ -15,12 +15,9 @@ def news_scape(args):
     tickers = ['AMZN', 'TSLA', 'GOOG', 'FB', 'MSFT', 'AAPL']
 
     for i in tickers:
-        options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
         # open it, go to a website, and get results
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Remote('http://selenium:4444/wd/hub',
+                                  desired_capabilities=DesiredCapabilities.CHROME)
         driver.get(yahoo_fin.format(ticker=i))
 
         ScrollNumber = 50
@@ -98,5 +95,5 @@ if __name__ == '__main__':
     # (the directory may or may not exist).
     Path(args.data).parent.mkdir(parents=True, exist_ok=True)
 
-    download_data(args)
+    news_scape(args)
     
