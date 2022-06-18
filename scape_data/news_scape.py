@@ -15,9 +15,13 @@ def news_scape(args):
     tickers = ['AMZN', 'TSLA', 'GOOG', 'FB', 'MSFT', 'AAPL']
 
     for i in tickers:
+        options = webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
         # open it, go to a website, and get results
         driver = webdriver.Remote('http://selenium:4444/wd/hub',
-                                  desired_capabilities=DesiredCapabilities.CHROME)
+                                  desired_capabilities=options.to_capabilities())
         driver.get(yahoo_fin.format(ticker=i))
 
         ScrollNumber = 50
