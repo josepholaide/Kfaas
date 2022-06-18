@@ -7,11 +7,11 @@ services:
     - "4444:4444"
     restart: always
  
- app:
-   build:
-     context: .
-   volumes:
-    - ./:/
-   command: sh -c "python3 news_scape.py"
-   depends_on:
-    - selenium
+  app:
+    build:
+      context: .
+    volumes:
+     - ./scape_data:/scape_data
+    command: sh -c "python3 news_scape.py --data data"
+    depends_on:
+     - selenium
