@@ -29,11 +29,11 @@ def news_scape(args):
             driver.execute_script("window.scrollTo(1,50000)")
             time.sleep(5)
         print(i)
-        file = open(f'{args.data}/{i}.html', 'w')
+        file = open(f'{i}.html', 'w')
         file.write(driver.page_source)
         file.close()
-
-        driver.close()
+        
+    driver.close()
         
     def extract_information(link, ticker):
         try:
@@ -77,7 +77,7 @@ def news_scape(args):
     
     newdf = []
     for i in tickers:
-        df = scrape(f'{args.data}/{i}.html', i)
+        df = scrape(f'{i}.html', i)
         newdf.append(df)
 
     data = new_df.to_dict(orient="records")
