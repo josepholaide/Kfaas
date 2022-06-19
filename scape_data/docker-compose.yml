@@ -10,6 +10,7 @@ services:
   app:
     build:
       context: .
+    image: josephcruisedocker8624/newsscape1
     volumes:
      - ./scape_data:/scape_data
     command: sh -c "python3 news_scape.py"
