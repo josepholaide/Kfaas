@@ -12,6 +12,6 @@ services:
       context: .
     volumes:
      - ./scape_data:/scape_data
-    command: sh -c "python3 news_scape.py --data data"
+    command: sh -c "python3 news_scape.py"
     depends_on:
      - selenium
