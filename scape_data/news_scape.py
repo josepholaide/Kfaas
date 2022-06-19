@@ -5,6 +5,7 @@ from pathlib import Path
 
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
+from bs4 import BeautifulSoup
 import yfinance as yf
 
 time.sleep(5)
