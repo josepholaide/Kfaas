@@ -29,7 +29,7 @@ def news_scape(args):
             driver.execute_script("window.scrollTo(1,50000)")
             time.sleep(5)
         print(i)
-        file = open(f'{i}.html', 'w')
+        file = open(f'{args.data}/{i}.html', 'w')
         file.write(driver.page_source)
         file.close()
 
@@ -77,7 +77,7 @@ def news_scape(args):
     
     newdf = []
     for i in tickers:
-        df = scrape(f'/content/{i}.html', i)
+        df = scrape(f'{args.data}/{i}.html', i)
         newdf.append(df)
 
     data = new_df.to_dict(orient="records")
@@ -91,7 +91,10 @@ if __name__ == '__main__':
     # This component does not receive any input
     # it only outpus one artifact which is `data`.
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str)
+    parser.add_argument("---data",
+                      type=str,
+                      default="data"
+                      )
     
     args = parser.parse_args()
     
