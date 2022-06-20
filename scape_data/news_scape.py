@@ -98,7 +98,7 @@ if __name__ == '__main__':
     # This component does not receive any input
     # it only outpus one artifact which is `data`.
     parser = argparse.ArgumentParser()
-    parser.add_argument("---data",
+    parser.add_argument("--data",
                       type=str,
                       default="data"
                       )
