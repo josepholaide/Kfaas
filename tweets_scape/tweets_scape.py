@@ -45,7 +45,7 @@ def tweets_scape():
         # Set database name to work with. If it doesn't exist, it will be created as soon as one document is added.
         db = client.finance
         # Set the collection to work with
-        collection = db.news
+        collection = db.news.tweets
         collection.insert_many(data)
     except:
         print('Mongodb not connected')
