@@ -18,8 +18,7 @@ def news_scape(args):
     yahoo_fin = 'https://finance.yahoo.com/quote/{ticker}/news?p={ticker}'
 
     # Gets and split dataset
-    tickers = ['AMZN', 'TSLA']
-    # tickers = ['AMZN', 'TSLA', 'GOOG', 'MSFT', 'AAPL']
+    tickers = ['AMZN', 'TSLA', 'GOOG', 'MSFT', 'AAPL']
     
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
@@ -106,7 +105,7 @@ def news_scape(args):
         db = client.finance
         # Set the collection to work with
         collection = db.news
-        collection.collection.insert_many(data)
+        collection.insert_many(data)
     except:
         print('Mongodb not connected')
         
