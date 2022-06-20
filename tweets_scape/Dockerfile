@@ -3,3 +3,4 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /
 RUN pip install pandas snscrape dnspython pymongo==3.7.2
 COPY tweets_scape.py /
+ENTRYPOINT ["python", "/tweets_scape.py"]
