@@ -14,7 +14,7 @@ def news_scape(args):
     yahoo_fin = 'https://finance.yahoo.com/quote/{ticker}/news?p={ticker}'
 
     # Gets and split dataset
-    tickers = ['AMZN', 'TSLA', 'GOOG', 'FB', 'MSFT', 'AAPL']
+    tickers = ['AMZN', 'TSLA', 'GOOG', 'MSFT', 'AAPL']
     
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
@@ -60,6 +60,9 @@ def news_scape(args):
             return (ticker, date, time, news)
         except:
             pass
+    def create_df(data):
+        df = pd.DataFrame(data, columns=["ticker", "Date", "Time", "News"])
+        return df
 
     def scrape(full_link, ticker):
         # open html file
@@ -74,15 +77,17 @@ def news_scape(args):
         for links in ul_tag.find_all('li'):
             link = links.find('a').get('href')
             df_data.append(extract_information(link, ticker))
-        df = pd.DataFrame(df_data, columns=["ticker", "Date", "Time", "News"])
+        df = create_df(df_data)
         return df
     
     newdf = []
     for i in tickers:
         df = scrape(f'{i}.html', i)
         newdf.append(df)
+        
+    newdf_ = pd.concat(newdf, ignore_index=True)
 
-    data = new_df.to_dict(orient="records")
+    data = newdf_.to_dict(orient="records")
         
     #Save the train_data and test_data as a pickle file to be used by the next component.
     with open(args.data, 'wb') as f:
