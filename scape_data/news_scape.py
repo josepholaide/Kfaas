@@ -3,6 +3,7 @@ import pickle
 import argparse, time
 from pathlib import Path
 import pandas as pd
+from urllib.request import urlopen, Request
 
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
