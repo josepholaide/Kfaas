@@ -18,7 +18,8 @@ def news_scape(args):
     yahoo_fin = 'https://finance.yahoo.com/quote/{ticker}/news?p={ticker}'
 
     # Gets and split dataset
-    tickers = ['AMZN', 'TSLA', 'GOOG', 'MSFT', 'AAPL']
+    tickers = ['AMZN', 'TSLA']
+    # tickers = ['AMZN', 'TSLA', 'GOOG', 'MSFT', 'AAPL']
     
     options = webdriver.ChromeOptions()
     options.add_argument('--headless')
