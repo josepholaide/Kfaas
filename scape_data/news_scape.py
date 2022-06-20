@@ -9,6 +9,9 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium import webdriver
 from bs4 import BeautifulSoup
 import yfinance as yf
+import datetime                           
+import pymongo
+from pymongo import MongoClient
 
 time.sleep(5)
 def news_scape(args):
@@ -89,6 +92,24 @@ def news_scape(args):
     newdf_ = pd.concat(newdf, ignore_index=True)
 
     data = newdf_.to_dict(orient="records")
+    
+    # uri (uniform resource identifier) defines the connection parameters 
+    uri = 'mongodb+srv://josepholaide:1234@cluster0.bqed12j.mongodb.net/?retryWrites=true&w=majority'
+    # start client to connect to MongoDB server 
+    client = MongoClient(uri)
+
+    try:
+        # Show existing database names
+        client.list_database_names()
+        # Set database name to work with. If it doesn't exist, it will be created as soon as one document is added.
+        db = client.finance
+        # Set the collection to work with
+        collection = db.news
+        collection.collection.insert_many(data)
+    except:
+        print('Mongodb not connected')
+        
+      
         
     #Save the train_data and test_data as a pickle file to be used by the next component.
     with open(args.data, 'wb') as f:
